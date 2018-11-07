@@ -5,7 +5,8 @@ from github import Github, GithubException
 from .forms import DictionaryForm
 from .models import Api
 from django.http import HttpResponse
- 
+import time
+
 def api_tipos(request):
     
     # all_apis = Api.objects.all()
@@ -127,11 +128,11 @@ def api_tipos(request):
         name_status5 = 'Método não permitido'
 
 
-    response1={'status': response1.status_code, 'url': url1,  'name_status': name_status1 }
-    response2={'status': response2.status_code, 'url': url2,  'name_status': name_status2 }
-    response3={'status': response3.status_code, 'url': url3,  'name_status': name_status3 }
-    response4={'status': response4.status_code, 'url': url4,  'name_status': name_status4 }
-    response5={'status': response5.status_code, 'url': url5,  'name_status': name_status5 }
+    response1={'status': response1.status_code, 'url': url1,  'name_status': name_status1, 'time': requests.get('https://api.ubiplaces.com.br/is/helper/tipos').elapsed.total_seconds() }
+    response2={'status': response2.status_code, 'url': url2,  'name_status': name_status2, 'time': requests.get('https://api.ubiplaces.com.br/is/helper/tipos').elapsed.total_seconds() }
+    response3={'status': response3.status_code, 'url': url3,  'name_status': name_status3, 'time': requests.get('https://api.ubiplaces.com.br/is/helper/tipos').elapsed.total_seconds() }
+    response4={'status': response4.status_code, 'url': url4,  'name_status': name_status4, 'time': requests.get('https://api.ubiplaces.com.br/is/helper/tipos').elapsed.total_seconds()  }
+    response5={'status': response5.status_code, 'url': url5,  'name_status': name_status5, 'time': requests.get('https://api.ubiplaces.com.br/is/helper/tipos').elapsed.total_seconds()  }
 
 
     responses.append(response1)
