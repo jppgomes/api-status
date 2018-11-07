@@ -8,7 +8,7 @@
 <div class="row">
     {% for api_item in all_items %}
     <div class="col-3">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="{% if api_item.status == 200 %}card text-white bg-primary mb-3{% else %}card text-white bg-danger mb-3{% endif %}" style="max-width: 18rem; height: 200px;">
             <div class="card-header">{{api_item.status}} - {{api_item.name_status}}</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ api_item.url }}</h5>
@@ -19,9 +19,8 @@
         {% endfor %}
    </div>
 
-    
-
-
 
 
 {% endblock %}
+
+"background-color:{% if status == 'started' %}green{% elif status == 'stopped' %}red{% endif %};
